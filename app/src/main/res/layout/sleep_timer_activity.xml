@@ -50,7 +50,7 @@
             android:layout_centerInParent="true"
             android:backgroundTint="#FFEB3B"
             android:elevation="0dp"
-            android:focusable="auto"
+            android:focusable="true"
             android:visibility="visible"
             app:backgroundTint="#00BCD4"
             app:borderWidth="30dp"

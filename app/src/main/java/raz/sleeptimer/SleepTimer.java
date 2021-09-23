@@ -15,8 +15,8 @@ public class SleepTimer extends AppCompatActivity
 {
     private boolean initialized = false;
     private static int minutes;
-    private static int xTouch, yTouch, angle;
-    private static int xCenter, yCenter, radius;
+    private static float xTouch, yTouch, angle;
+    public static float xCenter, yCenter, radius;
 
     private RelativeLayout layout;
     private TextView text;
@@ -34,6 +34,8 @@ public class SleepTimer extends AppCompatActivity
         text = findViewById(R.id.text);
         progressCircle = findViewById(R.id.progressCircle);
         centerButton = findViewById(R.id.centerButton);
+//        centerButton.setRippleColor(0);
+        centerButton.setEnabled(false);
 
         final Handler h = new Handler();
 

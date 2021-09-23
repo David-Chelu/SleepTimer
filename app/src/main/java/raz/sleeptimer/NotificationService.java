@@ -8,6 +8,8 @@ import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Binder;
 import android.os.CountDownTimer;
 import android.os.IBinder;
@@ -197,7 +199,7 @@ public class NotificationService extends Service
 
         TileService.setActive();
 
-        timer = new CountDownTimer(minutes * 60000, 60000)
+        timer = new CountDownTimer(minutes * 1000, 1000)
 
         {
             @Override
