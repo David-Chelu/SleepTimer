@@ -3,16 +3,15 @@ package com.example.sleeptimer;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import raz.sleeptimer.R;
 
 public class MainActivity extends AppCompatActivity
 {

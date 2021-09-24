@@ -27,7 +27,7 @@
 
         <service
             android:name="raz.sleeptimer.TileService"
-            android:icon="@drawable/scrubber_control_pressed_holo"
+            android:icon="@drawable/tile_icon"
             android:label="Sleep Timer"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>

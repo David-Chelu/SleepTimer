@@ -8,8 +8,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Binder;
 import android.os.CountDownTimer;
 import android.os.IBinder;
@@ -82,7 +80,7 @@ public class NotificationService extends Service
                     break;
                 case ACTION_STOP_TIMER_SERVICE:
                     stopTimerService();
-                    Toast.makeText(getApplicationContext(), "Timer Finished.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Timer done.", Toast.LENGTH_LONG).show();
                     break;
                 case ACTION_RESUME_TIMER:
                     startTimer();
@@ -131,19 +129,27 @@ public class NotificationService extends Service
         // Make head-up notification.
         builder.setFullScreenIntent(pendingIntent, true);
 
-        // Add Resume button intent in notification.
-        Intent resumeIntent = new Intent(this, NotificationService.class);
-        resumeIntent.setAction(ACTION_RESUME_TIMER);
-        PendingIntent pendingResumeIntent = PendingIntent.getService(this, 0, resumeIntent, 0);
-        NotificationCompat.Action playAction = new NotificationCompat.Action(android.R.drawable.ic_media_play, "Resume", pendingResumeIntent);
-        builder.addAction(playAction);
+        // Add Stop button intent in notification.
+        Intent stopIntent = new Intent(this, NotificationService.class);
+        stopIntent.setAction(ACTION_STOP_TIMER_SERVICE);
+        PendingIntent pendingStopIntent = PendingIntent.getService(this, 0, stopIntent, 0);
+        NotificationCompat.Action stopAction = new NotificationCompat.Action(android.R.drawable.ic_media_play, "Stop", pendingStopIntent);
+        builder.addAction(stopAction);
 
-        // Add Pause button intent in notification.
-        Intent pauseIntent = new Intent(this, NotificationService.class);
-        pauseIntent.setAction(ACTION_PAUSE_TIMER);
-        PendingIntent pendingPauseIntent = PendingIntent.getService(this, 0, pauseIntent, 0);
-        NotificationCompat.Action prevAction = new NotificationCompat.Action(android.R.drawable.ic_media_pause, "Pause", pendingPauseIntent);
-        builder.addAction(prevAction);
+
+//        // Add Resume button intent in notification.
+//        Intent resumeIntent = new Intent(this, NotificationService.class);
+//        resumeIntent.setAction(ACTION_RESUME_TIMER);
+//        PendingIntent pendingResumeIntent = PendingIntent.getService(this, 0, resumeIntent, 0);
+//        NotificationCompat.Action playAction = new NotificationCompat.Action(android.R.drawable.ic_media_play, "Resume", pendingResumeIntent);
+//        builder.addAction(playAction);
+//
+//        // Add Pause button intent in notification.
+//        Intent pauseIntent = new Intent(this, NotificationService.class);
+//        pauseIntent.setAction(ACTION_PAUSE_TIMER);
+//        PendingIntent pendingPauseIntent = PendingIntent.getService(this, 0, pauseIntent, 0);
+//        NotificationCompat.Action pauseAction = new NotificationCompat.Action(android.R.drawable.ic_media_pause, "Pause", pendingPauseIntent);
+//        builder.addAction(pauseAction);
 
         // Add Extend button intent in notification.
         Intent extendIntent = new Intent(this, NotificationService.class);
@@ -199,7 +205,7 @@ public class NotificationService extends Service
 
         TileService.setActive();
 
-        timer = new CountDownTimer(minutes * 1000, 1000)
+        timer = new CountDownTimer(minutes * 60 * 1000, 60 * 1000)
 
         {
             @Override
